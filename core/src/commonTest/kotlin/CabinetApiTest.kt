@@ -9,7 +9,6 @@ import kase.Pending
 import kase.Success
 import kommander.expect
 import koncurrent.later.await
-import koncurrent.later.catch
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 
