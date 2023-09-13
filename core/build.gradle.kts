@@ -12,7 +12,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(libs.kollections.interoperable)
-                api(libs.epsilon.core)
+                api(libs.epsilon.api.core)
             }
         }
 

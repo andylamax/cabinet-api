@@ -14,7 +14,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.cabinetApiCore)
-                api(libs.epsilon.fake)
+                api(libs.epsilon.api.fake)
                 api(libs.koncurrent.later.coroutines)
             }
         }
