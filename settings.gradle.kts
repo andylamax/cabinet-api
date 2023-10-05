@@ -16,8 +16,7 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
 }
 
 listOf(
-	"epsilon-api", "kollections",
-    "koncurrent", "kommander",
+	"epsilon-api", "kollections", "koncurrent", "kommander",
 ).forEach { includeBuild("../$it") }
 
 rootProject.name = "cabinet-api"
