@@ -3,13 +3,11 @@
 
 package cabinet
 
-import epsilon.Blob
-import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
+import epsilon.RawFile
 
-@Serializable
 data class FileUploadParam(
     val path: String,
     val filename: String,
-    val blob: Blob
+    val file: RawFile
 )

@@ -21,7 +21,7 @@ class CabinetApiTest {
 
         val params = FileUploadParam(
             path = "testament.pdf",
-            blob = FakeBlob(4545),
+            file = FakeBlob(4545),
             filename = "banana.int"
         )
 

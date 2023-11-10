@@ -27,7 +27,7 @@ class FakeRootDir(val config: FakeRootConfig) : AbstractRootDir() {
                     uid = "fake-attachment-${attachmentCount.incrementAndGet()}",
                     name = param.filename,
                     url = param.path,
-                    sizeInBytes = param.blob.readBytes(config.executor).await().size,
+                    sizeInBytes = param.file.readBytes(config.executor).await().size,
                 )
 
                 later.resolveWith(attachment)
