@@ -3,7 +3,7 @@
 
 package cabinet
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import epsilon.RawFile
 
 data class FileUploadParam(

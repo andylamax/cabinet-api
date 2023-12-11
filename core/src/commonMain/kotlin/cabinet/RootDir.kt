@@ -6,7 +6,7 @@ package cabinet
 import kollections.Map
 import koncurrent.Later
 import kollections.List
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import kotlin.js.JsName
 
 interface RootDir {

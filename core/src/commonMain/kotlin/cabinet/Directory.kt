@@ -3,7 +3,7 @@
 
 package cabinet
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 interface Directory {
     fun rootDir(uid: String): RootDir
