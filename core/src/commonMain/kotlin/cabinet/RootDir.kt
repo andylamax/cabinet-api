@@ -13,7 +13,7 @@ interface RootDir {
     fun upload(param: FileUploadParam): Later<Attachment>
 
     @JsName("uploadMany")
-    fun upload(params: Array<FileUploadParam>): Map<FileUploadParam, Later<Attachment>>
+    fun upload(params: List<FileUploadParam>): Map<FileUploadParam, Later<Attachment>>
 
     fun list(): Later<List<Attachment>>
 
