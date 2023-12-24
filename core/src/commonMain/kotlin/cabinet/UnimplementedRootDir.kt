@@ -4,6 +4,11 @@ import kollections.List
 import kollections.Map
 import kollections.mapOf
 import koncurrent.Later
+import koncurrent.later.then
+import koncurrent.later.andThen
+import koncurrent.later.andZip
+import koncurrent.later.zip
+import koncurrent.later.catch
 import koncurrent.TODOLater
 
 class UnimplementedRootDir : RootDir {

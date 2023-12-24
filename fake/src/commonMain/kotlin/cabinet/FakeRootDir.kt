@@ -4,6 +4,11 @@ import cabinet.internal.AbstractRootDir
 import kollections.Map
 import kollections.toIMap
 import koncurrent.Later
+import koncurrent.later.then
+import koncurrent.later.andThen
+import koncurrent.later.andZip
+import koncurrent.later.zip
+import koncurrent.later.catch
 import koncurrent.PendingLater
 import koncurrent.later.await
 import kollections.List
