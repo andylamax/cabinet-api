@@ -12,11 +12,11 @@ import koncurrent.later.catch
 import koncurrent.TODOLater
 
 class UnimplementedRootDir : RootDir {
-    override fun upload(param: FileUploadParam): Later<Attachment> = TODOLater()
+    override fun upload(param: FileUploadParam) : Later<Attachment> = TODOLater()
 
     override fun upload(params: List<FileUploadParam>): Map<FileUploadParam, Later<Attachment>> = mapOf()
 
-    override fun list(): Later<List<Attachment>> = TODOLater()
+    override fun list() = TODOLater()
 
-    override fun delete(attachment: Attachment): Later<Attachment> = TODOLater()
+    override fun delete(attachment: Attachment) = TODOLater()
 }
