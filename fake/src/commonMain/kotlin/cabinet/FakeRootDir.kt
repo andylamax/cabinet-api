@@ -1,17 +1,17 @@
 package cabinet
 
 import cabinet.internal.AbstractRootDir
+import kollections.List
 import kollections.Map
+import kollections.entries
+import kollections.forEach
+import kollections.key
 import kollections.toIMap
+import kollections.toMap
+import kollections.value
 import koncurrent.Later
-import koncurrent.later.then
-import koncurrent.later.andThen
-import koncurrent.later.andZip
-import koncurrent.later.zip
-import koncurrent.later.catch
 import koncurrent.PendingLater
 import koncurrent.later.await
-import kollections.List
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -20,8 +20,10 @@ class FakeRootDir(val config: FakeRootConfig) : AbstractRootDir() {
     private val max get() = config.max
     private val scope get() = config.scope
     override fun upload(params: Array<FileUploadParam>): Map<FileUploadParam, Later<Attachment>> {
-        val paramLaterMap = params.associateWith { PendingLater<Attachment>() }.toIMap()
-        paramLaterMap.pairs.forEach { (param, later) ->
+        val paramLaterMap = params.associateWith { PendingLater<Attachment>() }.toMap()
+        paramLaterMap.entries.forEach { entry ->
+            val param = entry.key
+            val later = entry.value
             val (uploading) = later.setStages("Uploading ${config.path}/${param.path}")
             scope.launch {
                 for (i in 0..max) {
