@@ -12,6 +12,6 @@ data class AttachmentDto(
     val name: String,
     val url: String,
     val size: MemorySize,
+    val type: String? = null,
     val description: String? = null,
-    val contentType: String? = null,
 )

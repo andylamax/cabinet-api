@@ -11,16 +11,19 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(libs.kollections.interoperable)
-                api(libs.epsilon.core)
+                api(projects.cabinetApiCore)
+                api(libs.cinematic.scene.core)
+                api(libs.koncurrent.later.coroutines)?.because("We need to launch a coroutines scope and fetch an authenticated url")
+                api(ktor.client.core)
+                api(libs.epsilon.fields)
+                api(libs.klip.api)
+                api(libs.bringer.api)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                api(libs.koncurrent.later.coroutines)
                 api(libs.kommander.coroutines)
-                api(projects.cabinetApiFake)
             }
         }
     }
