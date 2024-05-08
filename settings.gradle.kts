@@ -22,4 +22,4 @@ listOf(
 
 rootProject.name = "cabinet-api"
 
-includeSubs("cabinet-api", ".", "core", "fake", "presenter")
+includeSubs("cabinet-api", ".", "core", "fake", "presenters")
