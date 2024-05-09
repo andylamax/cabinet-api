@@ -3,27 +3,19 @@
 package cabinet
 
 import cinematic.mutableLiveOf
-import epsilon.FileManager
 import epsilon.FileOutput
 import epsilon.RawFileInfo
-import io.ktor.client.HttpClient
-import io.ktor.client.request.get
-import io.ktor.client.statement.bodyAsChannel
-import io.ktor.util.toByteArray
 import kase.LazyState
 import kase.Loading
 import kase.Pending
 import kase.toLazyState
-import klip.Clipboard
 import koncurrent.FailedLater
 import koncurrent.Later
-import koncurrent.later
 import koncurrent.later.andThen
 import koncurrent.later.finally
 import koncurrent.later.then
 import koncurrent.toLater
 import kotlinx.JsExport
-import kotlinx.coroutines.CoroutineScope
 
 class AttachmentPresenter(
     val src: AttachmentDto,
@@ -62,16 +54,15 @@ class AttachmentPresenter(
         }
     }
 
-    private fun download(): Later<FileOutput> = options.scope.later {
+    private fun download(): Later<FileOutput> {
         if (options.headers.isEmpty()) {
-            return@later FileOutput(src.url, updated = false, info = null, file = null)
+            return FileOutput(src.url, updated = false, info = null, file = null).toLater()
         }
-        val response = options.http.get(src.url) {
-            options.headers.forEach { (key, value) -> headers.append(key, value) }
+        return options.file.download(src.url, src.name, options.headers).then { file ->
+            RawFileInfo(file)
+        }.then { info ->
+            FileOutput(info.url, updated = false, info = info, file = info.file)
         }
-        val content = response.bodyAsChannel().toByteArray()
-        val info = RawFileInfo(options.file.create.binary(content, src.name, type ?: "application/octet-stream"))
-        FileOutput(info.url, updated = false, info = info, file = info.file)
     }
 
     fun deInitialize() {
